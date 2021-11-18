@@ -1,0 +1,147 @@
+/*
+    ESTO LO TENGO COLOCADO AL FINAL DE TODOS LOS PROTOTYPES DE BIBLIOTECA
+*/
+
+Biblioteca.prototype.listadoPrestamos = function(fechaInicial, fechaFinal)
+{
+    //Indices de la tabla
+    let sTabla = '<table class="table" border="1">';
+    sTabla += '<thead>';
+    sTabla += '<tr>';
+    sTabla += '<th scope="col">ID Préstamo</th>';
+    sTabla += '<th scope="col">ID Usuario</th>';
+    sTabla += '<th scope="col">Nombre</th>';
+    sTabla += '<th scope="col">Apellidos</th>';
+    sTabla += '<th scope="col">Articulos</th>';
+    sTabla += '<th scope="col">Fecha Inicial</th>';
+    sTabla += '<th scope="col">Fecha Finalizacion</th>';
+    sTabla += '</tr>';
+    sTabla += '</thead>';
+    sTabla += '<tbody>';
+
+    //Body de la tabla. 
+    for(let i=0 ; i<this.prestamos.length ; i++)
+    {
+        //Seleccionamos solo los prestamos que esten entre las fechas
+        if (this.prestamos[i].fechaInicio >= fechaInicial && this.prestamos[i].fechaInicio <= fechaFinal)
+        {
+            sTabla += '<tr><td>' + this.prestamos[i].idPrestamo + '</td>';
+            sTabla += '<td>' + this.prestamos[i].usuario.idUsuario +'</td>';
+            sTabla += '<td>' + this.prestamos[i].usuario.nombre +'</td>';
+            sTabla += '<td>' + this.prestamos[i].usuario.apellidos +'</td>';
+            sTabla += '<td>';
+            //For para los articulos
+            for (let j = 0 ; j<this.prestamos[i].articulos.length ; j++)
+            {
+                sTabla += this.prestamos[i].articulos[j].titulo +'<br>';
+            }
+            sTabla += '</td>';
+
+            sTabla += '<td>' + this.prestamos[i].fechaInicio.toDateString() +'</td>';
+
+            if(this.prestamos[i].fechaFin==null)
+                sTabla += '<td>No devuelto</td>';
+            else
+                sTabla += '<td>' + this.prestamos[i].fechaFin.toDateString() +'</td>';
+
+                sTabla += '</tr>';
+
+        }
+    }
+    sTabla += '</tbody>';
+
+    return sTabla;
+}
+
+Biblioteca.prototype.listadoPrestamosUsuario = function(iIdUsuario)
+{
+    //Indices de la tabla
+    let sTabla = '<table class="table" border="1">';
+    sTabla += '<thead>';
+    sTabla += '<tr>';
+    sTabla += '<th scope="col">ID Prestamo</th>';
+    sTabla += '<th scope="col">Articulos</th>';
+    sTabla += '<th scope="col">Fecha Inicio</th>';
+    sTabla += '<th scope="col">Fecha Finalizacion</th>';
+    sTabla += '</tr>';
+    sTabla += '</thead>';
+    sTabla += '<tbody>';
+
+    //Body de la tabla
+    for (let i=0; i<this.prestamos.length ; i++)
+    {
+        if (this.prestamos[i].usuario.idUsuario == iIdUsuario)
+        {
+            sTabla += '<tr><td>'+this.prestamos[i].idPrestamo+'</td>';
+            
+            sTabla += '<td>';
+            for (let j = 0 ; j<this.prestamos[i].articulos.length ; j++)
+            {
+                sTabla += this.prestamos[i].articulos[j].titulo +'<br>';
+            }
+            sTabla += '</td>';
+
+            sTabla += '<td>'+this.prestamos[i].fechaInicio.toDateString()+'</td>';
+
+            if(this.prestamos[i].fechaFin==null)
+                sTabla += '<td>No devuelto</td>';
+            else
+                sTabla += '<td>' + this.prestamos[i].fechaFin.toDateString() +'</td>';
+
+            sTabla += '</tr>';
+        }
+        else
+        {
+            sTabla = '<h1>No se ha encontrado al usuario</h1>';
+        }
+    } 
+    
+    return sTabla;
+}
+
+Biblioteca.prototype.listadoTiposArticulos = function(txtTipoArticulo)
+{
+    //  libros instance of articulo
+
+    //Indices de la tabla
+    let sTabla = '<table class="table">';
+    sTabla += '<thead>';
+    sTabla += '<tr>';
+    sTabla += '<th scope="col">ID Artículo</th>';
+    sTabla += '<th scope="col">Título</th>';
+
+    switch (txtTipoArticulo)
+    {
+        case 'Libro':
+            sTabla += '<th scope="col">Autor</th>';
+            sTabla += '<th scope="col">Páginas</th>';
+            sTabla += '<th scope="col">Prestado</th>';
+            sTabla += '</tr>';
+            sTabla += '</thead>';
+            sTabla += '<tbody>';
+            for (let i=0; i<this.catalogo.length ; i++)
+            {
+                if (this.catalogo[i] instanceof Libro)
+                {
+                    sTabla += this.catalogo[i].toHTMLRow;
+                }
+            }
+            break;
+        case 'DVD':
+            sTabla += '<th scope="col">Fecha de Estreno</th>';
+            sTabla += '<th scope="col">Subtitulada</th>';
+            sTabla += '<th scope="col">Prestado</th>';
+            sTabla += '</tr>';
+            sTabla += '</thead>';
+            sTabla += '<tbody>';
+            for (let i=0; i<this.catalogo.length ; i++)
+            {
+                if (this.catalogo[i] instanceof DVD)
+                {
+                    sTabla += this.catalogo[i].toHTMLRow;
+                }
+            }
+            break;
+    }
+    return sTabla;
+}

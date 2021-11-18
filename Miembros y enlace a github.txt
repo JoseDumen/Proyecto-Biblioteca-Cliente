@@ -1,0 +1,9 @@
+Trabajo de la biblioteca para la asignatura de Desarrollo en Entorno Cliente.
+Realizado por:
+   -> Miguel Villalba
+   -> Joaquín Yanes
+   -> José Francisco Durán
+   -> Carlos Serrano Blesa
+
+Enlace al repositorio de github:
+   -> https://github.com/JoseDumen/Proyecto-Biblioteca-Cliente

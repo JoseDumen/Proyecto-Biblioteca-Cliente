@@ -1,0 +1,72 @@
+    <div class="areaAltaArticulo my-5">
+        <form class="w-50">
+            <div class="form-group row my-2">
+              <label for="txtIdArticulo" class="col-4 col-form-label">ID Artículo</label> 
+              <div class="col-8">
+                <input id="txtIdArticulo" name="txtIdArticulo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+              <label for="txtTitulo" class="col-4 col-form-label">Título</label> 
+              <div class="col-8">
+                <input id="txtTitulo" name="txtTitulo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+              <label class="col-4">Tipo de artículo</label> 
+              <div class="col-8">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input name="radioLibro" id="radioLibro" type="radio" class="custom-control-input" value="libro" checked> 
+                  <label for="radioLibro" class="custom-control-label">Libro</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input name="radioDvd" id="radioDvd" type="radio" class="custom-control-input" value="dvd"> 
+                  <label for="radioDvd" class="custom-control-label">DVD</label>
+                </div>
+              </div>
+            </div>
+
+        <div class="frmLibro">
+            <div class="form-group row my-2">
+              <label for="txtNombreAutor" class="col-4 col-form-label">Nombre autor/a</label> 
+              <div class="col-8">
+                <input id="txtNombreAutor" name="txtNombreAutor" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+              <label for="iNumeroPaginas" class="col-4 col-form-label">Número de páginas</label> 
+              <div class="col-8">
+                <input id="iNumeroPaginas" name="iNumeroPaginas" type="text" class="form-control">
+              </div>
+            </div>
+        </div>
+
+        <div class="frmDvd">
+            <div class="form-group row my-2">
+              <label for="dtFechaEstreno" class="col-4 col-form-label">Fecha de estreno</label> 
+              <div class="col-8">
+                <input id="dtFechaEstreno" name="dtFechaEstreno" type="date" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4">Subtitulado</label> 
+                <div class="col-8">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input name="radioSubtituladoSi" id="radioSubtituladoSi" type="radio" class="custom-control-input" value="subtituladoSi" checked> 
+                    <label for="radioSubtituladoSi" class="custom-control-label">Sí</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input name="radioSubtituladoNo" id="radioSubtituladoNo" type="radio" class="custom-control-input" value="subtituladoNo"> 
+                    <label for="radioSubtituladoNo" class="custom-control-label">No</label>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+            <div class="form-group row my-2">
+              <div class="offset-4 col-8">
+                <input name="botonAltaArticulo" type="button" class="btn btn-primary w-25" value="Alta"/>
+              </div>
+            </div>
+          </form>
+        </div> <!--fin area alta artículo-->

@@ -1,0 +1,24 @@
+body::after {
+    content: "";
+    background: url(../assets/silence.jpg);
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+  .nombreAlumno {
+    font-size: medium;
+  }
+  #mensaje {
+    padding: 1em;
+    width:20em; 
+    height:10em; 
+    position: absolute;
+    border-radius: 5px;
+    top: 20%; 
+    left: 60%; 
+    border: 2px solid rgb(218, 218, 4);
+  }

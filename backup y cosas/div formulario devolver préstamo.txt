@@ -1,0 +1,15 @@
+<div class="areaDevolverPrestamo">
+            <form class="w-50">
+                <div class="form-group row my-2">
+                  <label for="txtIdDevolverPrestamo" class="col-4 col-form-label">ID Préstamo</label> 
+                  <div class="col-8">
+                    <input id="txtIdDevolverPrestamo" name="txtIdDevolverPrestamo" type="text" class="form-control">
+                  </div>
+                </div> 
+                <div class="form-group row my-2">
+                  <div class="offset-4 col-8">
+                    <input name="botonDevolverPrestamo" type="button" class="btn btn-primary w-25" value="Devolver"/>
+                </div>
+                </div>
+              </form>
+</div> <!--fin área devolver préstamo-->

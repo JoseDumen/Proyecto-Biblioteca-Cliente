@@ -1,0 +1,88 @@
+<!--TODO ESTO VA AL FINAL DEL INDEX, AUNQUE SUPONGO QUE COMO SE VAN VISUALIZANDO LOS FORMULARIOS DA IGUAL EN QUE ORDEN SE COLOQUEN-->
+
+
+
+        <div class="areaFrm my-5" id="areaListadoPrestamos"> <!--área listado préstamos-->
+          <form class="w-50" name="frmListadoPrestamos" id="frmListadoPrestamos">
+
+            <legend>Listado de Préstamos segun dos fechas</legend>
+
+            <!--Fecha Inicial para el listado-->
+            <div class="form-group">
+              <label for="dtFechaInicial">Fecha inicial</label>
+              <div class="w-50" name="frmListadoPrestamosFechaInicial" id="frmListadoPrestamosFechaInicial">
+                <input type="date" class="form-control input-md" id="dtListadoPrestamosFechaInicial" name="dtListadoPrestamosFechaInicial">
+              </div>
+            </div>
+
+            <!--Fecha Final para el listado-->
+            <div class="form-group">
+              <label for="dtFechaFinal">Fecha Final</label>
+              <div class="w-50" name="frmListadoPrestamosFechaFinal" id="frmListadoPrestamosFechaFinal">
+                <input type="date" class="form-control input-md" id="dtListadoPrestamosFechaFinal" name="dtListadoPrestamosFechaFinal">
+              </div>
+            </div>
+
+            <!--Button-->
+            <div class="form-group">
+              <label for="btnListadoPrestamos"></label>
+              <div class="w-50" name="frmListadoPrestamosFechaFBoton">
+                <input type="button" id="btnListadoPrestamosBoton" name="btnListadoPrestamosBoton" class="btn btn-primary" value="Listar" onclick="aceptarListadoPrestamos()"/>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+        <div class="areaFrm my-5" id="areaListadoPrestamosUsuario"> <!--área listado préstamos usuario-->
+          <form class="w-50" name="frmListadoPrestamosUsuario" id="frmListadoPrestamosUsuario">
+
+            <legend>Listado de Préstamos del Usuario</legend>
+
+            <!--Usuario para el listado-->
+            <div class="form-group">
+              <label for="idUsuario">ID Usuario</label>
+              <div class="w-50" name="frmListadoPrestamosUsuario" id="frmListadoPrestamosUsuario">
+                <input type="text" class="form-control input-md" id="iIdUsuario" name="iIdUsuario">
+              </div>
+            </div>
+
+            <!--Button-->
+            <div class="form-group">
+              <label for="btnListadoPrestamosUsuario"></label>
+              <div class="w-50" name="frmListadoPrestamosFechaFBoton">
+                <input type="button" id="btnListadoPrestamosUsuarioBoton" name="btnListadoPrestamosUsuarioBoton" class="btn btn-primary" value="Listar" onclick="aceptarListadoPrestamosUsuario()"/>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+        <div class="areaFrm my-5" id="areaListadoTiposArticulos"> <!--área listado tipos de articulos-->
+          <form class="w-50" name="frmListadoTiposArticulos" id="frmListadoTiposArticulos">
+            
+            <legend>Listado de Artículos</legend>
+
+            <!--Tipo de Archivo que se quiere listar-->
+            <div class="form-group">
+              <label for="tipoArchivo">Tipo de Archivo</label>
+              <div class="w-50" name="frmListadoTiposArticulos" id="frmListadoTiposArticulos">
+                <select name="tipoArchivo" id="tipoArchivo">
+                  <option value="Libro">Libros</option>
+                  <option value="DVD">DVD</option>
+                </select>
+              </div>
+            </div>
+
+            <!--Button-->
+            <div class="form-group">
+              <label for="btnListadoTiposArticulos"></label>
+              <div class="w-50" name="frmListadoPrestamosFechaFBoton">
+                <input type="button" id="btnListadoTiposArticulos" name="btnListadoTiposArticulos" class="btn btn-primary" value="Listar" onclick="aceptarListadoTiposArticulos()"/>
+              </div>
+            </div>
+
+          </form>
+        </div>

@@ -1,0 +1,43 @@
+//  ESTOS LOS PUEDES PONER AL FINAL DEL TODO
+
+function aceptarListadoPrestamos(){ //Listado de préstamos entre dos fechas
+    let fechaInicial = new Date (frmListadoPrestamos.dtListadoPrestamosFechaInicial.value);
+    let fechaFinal = new Date (frmListadoPrestamos.dtListadoPrestamosFechaFinal.value);
+    let sTabla = biblioteca.listadoPrestamos(fechaInicial,fechaFinal);
+    
+    
+    let oVentana = open("", "_blank");
+
+    oVentana.document.open();
+    oVentana.document.write("<h1>Listado de préstamos</h1>");
+    oVentana.document.write(sTabla);
+    oVentana.document.close();
+    oVentana.document.title = "Listado Préstamos";
+  
+}
+
+function aceptarListadoPrestamosUsuario(){
+    let iIdUsuario = parseInt(document.getElementById("iIdUsuario").value.trim());
+    let sTabla = biblioteca.listadoPrestamosUsuario(iIdUsuario);
+
+    let oVentana = open("", "_blank","");
+
+    oVentana.document.open();
+    oVentana.document.write("<h1>Listado de Préstamos del usuario "+iIdUsuario+"</h1>");
+    oVentana.document.write(sTabla);
+    oVentana.document.close();
+    oVentana.document.title = "Listado Préstamos";
+}
+
+function aceptarListadoTiposArticulos(){
+    var txtTipoArticulo = document.getElementById("tipoArchivo").value;
+    let sTabla = biblioteca.listadoTiposArticulos(txtTipoArticulo);
+
+    let oVentana = open("", "_blank","");
+
+    oVentana.document.open();
+    oVentana.document.write("<h1>Listado de Artículos</h1>");
+    oVentana.document.write(sTabla);
+    oVentana.document.close();
+    oVentana.document.title = "Listado Articulos";
+}

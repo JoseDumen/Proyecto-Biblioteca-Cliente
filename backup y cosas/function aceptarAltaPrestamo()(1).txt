@@ -1,0 +1,60 @@
+function aceptarAltaPrestamo(){
+    let oLibro1;
+    let oLibro2;
+    let oDVD1;
+    let oDVD2;
+    let sMensaje = validarCamposAltaPrestamo();
+    
+    if (sMensaje == ""){
+        let iIdPrestamo = parseInt(frmAltaPrestamo.txtIdPrestamo.value.trim());
+        let articulos = [];
+        if (parseInt(frmAltaPrestamo.lstLibro1.value.trim()) != -1 ){
+            oLibro1 = biblioteca.buscarArticulo(parseInt(frmAltaPrestamo.lstLibro1.value.trim()));
+            articulos.push(oLibro1);
+        }
+        if (parseInt(frmAltaPrestamo.lstLibro2.value.trim()) != -1 ){
+            oLibro2 = biblioteca.buscarArticulo(parseInt(frmAltaPrestamo.lstLibro2.value.trim()))
+            articulos.push(oLibro2);
+        }
+        if (parseInt(frmAltaPrestamo.lstDVD1.value.trim()) != -1 ){
+            oDVD1 = biblioteca.buscarArticulo(parseInt(frmAltaPrestamo.lstDVD1.value.trim()));
+            articulos.push(oDVD1);
+        }
+        if (parseInt(frmAltaPrestamo.lstDVD2.value.trim()) != -1 ){
+            oDVD2 = biblioteca.buscarArticulo(parseInt(frmAltaPrestamo.lstDVD2.value.trim()));
+            articulos.push(oDVD2);
+        }
+
+        let idUsuario = parseInt(frmAltaPrestamo.txtIdUsuario.value.trim());
+
+        let oUsuario = biblioteca.buscarUsuario(idUsuario);
+
+        console.log("oUsuario "+ oUsuario);
+
+        if(oUsuario != undefined){
+
+            let dtFechaInicio = new Date(frmAltaPrestamo.txtFechaInicio.value);
+
+            let oPrestamo = new Prestamo(iIdPrestamo,articulos,oUsuario,dtFechaInicio,null);
+    
+            let sMensajeAlta = biblioteca.altaPrestamo(oPrestamo);
+    
+            if(sMensajeAlta == "Préstamo aceptado correctamente"){   
+                document.getElementById("mensaje").style.display = "block";
+                document.getElementById("mensaje").innerHTML = sMensajeAlta;
+                document.getElementById("areaAltaPrestamo").hidden = true;            
+                frmAltaPrestamo.reset();
+            } else {
+                document.getElementById("mensaje").style.display = "block";
+                document.getElementById("mensaje").innerHTML = sMensajeAlta;
+            }       
+        } else {
+            sMensaje = "Ese usuario no existe";
+            document.getElementById("mensaje").style.display = "block";
+            document.getElementById("mensaje").innerHTML = sMensaje;
+        }
+    } else {
+        document.getElementById("mensaje").style.display = "block";
+        document.getElementById("mensaje").innerHTML = sMensaje;
+    }         
+}

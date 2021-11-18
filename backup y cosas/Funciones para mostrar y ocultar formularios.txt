@@ -1,0 +1,17 @@
+//IMPORTANTE: hay que usar el último index.html que se ha subido, que ha habido que hacerle cambios
+
+function gestionFormularios(areaVisible) {
+    for(let area of document.getElementsByClassName("areaFrm"))
+        area.hidden = true;
+    document.getElementById(areaVisible).hidden=false;
+}
+
+function ocultarAreaLibro() {
+document.getElementById("areaFrmLibro").hidden=true;
+document.getElementById("areaFrmDvd").hidden=false;
+}
+
+function ocultarAreaDvd() {
+    document.getElementById("areaFrmDvd").hidden=true;
+    document.getElementById("areaFrmLibro").hidden=false;
+}

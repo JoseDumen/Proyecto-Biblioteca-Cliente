@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Biblioteca</title>
+<!--CSS Bootsrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" type="text/css">
+    <link rel="stylesheet" href="css/estilo.css" type="text/css">
+  </head>
+<body>
+<nav class="nav navbar-dark">
+  <div class="btn-group">
+    <a class="nav-link" href="#" onclick="gestionFormularios('areaHome');">Home</a>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Altas
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="nav-link" href="#" onclick="gestionFormularios('areaAltaUsuario');">Alta de Usuario</a></li>
+      <li><a class="nav-link" href="#" onclick="gestionFormularios('areaAltaArticulo');">Alta de Artículo</a></li>
+    </ul>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Préstamos
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="nav-link" href="#" onclick="gestionFormularios('areaAltaPrestamo');">Alta Préstamo</a></li>
+      <li><a class="nav-link" href="#" onclick="gestionFormularios('areaDevolverPrestamo');">Devolver Préstamo</a></li>
+    </ul>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Listados
+    </button>
+    <ul class="dropdown-menu">
+      <a class="nav-link" href="#" onclick="abrirVentanaListadoUsuarios();">Listado Usuarios</a>
+                <li><a class="nav-link" href="#" onclick="abrirVentanaListadoArticulos();">Listado Artículos</a></li>
+                <li><a class="nav-link" href="#" onclick="gestionFormularios('areaListadoPrestamos');">Listado Préstamos</a></li>
+                <li><a class="nav-link" href="#" onclick="gestionFormularios('areaListadoPrestamosUsuario');">Listado Préstamos Usuarios</a></li>
+                <li><a class="nav-link" href="#" onclick="gestionFormularios('areaListadoTiposArticulos');">Listado Tipo de Artículos</a></li>
+    </ul>
+  </div>
+</nav>
+      <div class="container">
+        <div class="areaFrm my-5" id="areaHome"> <!--área Home-->
+          <div class="display-4 mb-5 cabecera">Biblioteca</div>
+          <div class="display-5 mb-5 cabecera">IES Hermanos Machado</div>
+          <div class="display-6 mb-5 cabecera">Grupo 5</div>
+          <div class="nombreAlumno">Joaquín Yanes</div>
+          <div class="nombreAlumno">José Francisco Durán</div>
+          <div class="nombreAlumno">Carlos Serrano Blesa</div>
+          <div class="nombreAlumno">Miguel Villalba</div>
+        </div>
+
+
+        <div class="areaFrm my-5" id="areaAltaUsuario" hidden> <!--area alta usuario-->
+          <div class="display-4 mb-5 cabecera">Alta usuario</div>
+            <form class="w-50" name="frmAltaUsuario" id="frmAltaUsuario">
+              <div class="form-group row my-2">
+                <label for="txtIdAltaUsuario" class="col-4 col-form-label">ID Usuario</label> 
+                <div class="col-8">
+                  <input id="txtIdAltaUsuario" name="txtIdAltaUsuario" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="form-group row my-2">
+                <label for="txtNombreUsuario" class="col-4 col-form-label">Nombre</label> 
+                <div class="col-8">
+                  <input id="txtNombreUsuario" name="txtNombreUsuario" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="form-group row my-2">
+                <label for="txtApellidosUsuario" class="col-4 col-form-label">Apellidos</label> 
+                <div class="col-8">
+                  <input id="txtApellidosUsuario" name="txtApellidosUsuario" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="form-group row my-2">
+                <label for="txtTelefono" class="col-4 col-form-label">Teléfono</label> 
+                <div class="col-8">
+                  <input id="txtTelefono" name="txtTelefono" type="text" class="form-control">
+                </div>
+              </div> 
+              <div class="form-group row my-2">
+                <div class="offset-4 col-8">
+                  <input name="botonAceptarAltaUsuario" type="button" class="btn btn-primary w-25" onclick="biblioteca.altaUsuario(nuevoUsuario())" value="Aceptar"/>
+                </div>
+              </div>
+            </form>
+        </div> <!--fin área alta usuario-->
+
+        <div class="areaFrm my-5" id="areaAltaArticulo" hidden> <!--area alta artículo-->
+          <div class="display-4 mb-5 cabecera">Alta artículo</div>
+        <form class="w-50" name="frmAltaArticulo" id="frmAltaArticulo">
+            <div class="form-group row my-2">
+              <label for="txtIdArticulo" class="col-4 col-form-label">ID Artículo</label> 
+              <div class="col-8">
+                <input id="txtIdArticulo" name="txtIdArticulo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+              <label for="txtTitulo" class="col-4 col-form-label">Título</label> 
+              <div class="col-8">
+                <input id="txtTitulo" name="txtTitulo" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+              <label class="col-4">Tipo de artículo</label> 
+              <div class="col-8">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input name="radioArticulo" id="radioLibro" type="radio" class="custom-control-input" value="libro" onclick="ocultarAreaDvd()" checked> 
+                  <label for="radioLibro" class="custom-control-label">Libro</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input name="radioArticulo" id="radioDvd" type="radio" class="custom-control-input" value="dvd" onclick="ocultarAreaLibro()"> 
+                  <label for="radioDvd" class="custom-control-label">DVD</label>
+                </div>
+              </div>
+            </div>
+
+        <div class="frmLibro" id="areaFrmLibro">
+            <div class="form-group row my-2">
+              <label for="txtNombreAutor" class="col-4 col-form-label">Nombre autor/a</label> 
+              <div class="col-8">
+                <input id="txtNombreAutor" name="txtNombreAutor" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+              <label for="iNumeroPaginas" class="col-4 col-form-label">Número de páginas</label> 
+              <div class="col-8">
+                <input id="iNumeroPaginas" name="iNumeroPaginas" type="text" class="form-control">
+              </div>
+            </div>
+        </div>
+
+        <div class="frmDvd" id="areaFrmDvd" hidden>
+            <div class="form-group row my-2">
+              <label for="dtFechaEstreno" class="col-4 col-form-label">Fecha de estreno</label> 
+              <div class="col-8">
+                <input id="dtFechaEstreno" name="dtFechaEstreno" type="date" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4">Subtitulado</label> 
+                <div class="col-8">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input name="radioSubtitulado" id="radioSubtituladoSi" type="radio" class="custom-control-input" value="subtituladoSi" checked> 
+                    <label for="radioSubtituladoSi" class="custom-control-label">Sí</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input name="radioSubtitulado" id="radioSubtituladoNo" type="radio" class="custom-control-input" value="subtituladoNo"> 
+                    <label for="radioSubtituladoNo" class="custom-control-label">No</label>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+            <div class="form-group row my-2">
+              <div class="offset-4 col-8">
+                <input name="botonAltaArticulo" type="button" class="btn btn-primary w-25" value="Alta" onclick="biblioteca.altaArticulo(nuevoArticulo())"/>
+              </div>
+            </div>
+          </form>
+        </div> <!--fin area alta artículo-->
+
+        <div class="areaFrm my-5" id="areaAltaPrestamo" hidden> <!--área Alta Préstamo-->
+          <div class="display-4 mb-5 cabecera">Alta préstamo</div>
+            <form class="w-50" name="frmAltaPrestamo" id="frmAltaPrestamo">
+                <div class="form-group row my-2">
+                  <label for="txtIdPrestamo" class="col-4 col-form-label">ID préstamo</label> 
+                  <div class="col-8">
+                    <input id="txtIdPrestamo" name="txtIdPrestamo" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <label for="lstDVD1" class="col-4 col-form-label">DVD 1</label> 
+                  <div class="col-8">
+                    <select id="lstDVD1" name="lstDVD1" class="custom-select"></select>
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <label for="lstDVD2" class="col-4 col-form-label">DVD 2</label> 
+                  <div class="col-8">
+                    <select id="lstDVD2" name="lstDVD2" class="custom-select">
+                      <option value=""></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <label for="lstLibro1" class="col-4 col-form-label">Libro 1</label> 
+                  <div class="col-8">
+                    <select id="lstLibro1" name="lstLibro1" class="custom-select"></select>
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <label for="lstLibro2" class="col-4 col-form-label">Libro2</label> 
+                  <div class="col-8">
+                    <select id="lstLibro2" name="lstLibro2" class="custom-select"></select>
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <label for="txtIdUsuario" class="col-4 col-form-label">ID usuario</label> 
+                  <div class="col-8">
+                    <input id="txtIdUsuario" name="txtIdUsuario" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <label for="txtFechaInicio" class="col-4 col-form-label">Fecha inicio</label> 
+                  <div class="col-8">
+                    <input id="txtFechaInicio" name="txtFechaInicio" type="date" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row my-2">
+                  <div class="offset-4 col-8">
+                    <input name="botonAltaPrestamo" type="button" class="btn btn-primary w-25" value="Alta" onclick="aceptarAltaPrestamo()"/>
+                  </div>
+                </div>
+              </form>
+
+        </div> <!--fin área préstamo-->
+
+        <div class="areaFrm my-5" id="areaDevolverPrestamo" hidden> <!--área devolver préstamo-->
+          <div class="display-4 mb-5 cabecera">Devolver préstamo</div>
+            <form class="w-50" name="frmDevolverPrestamo" id="frmDevolverPrestamo">
+                <div class="form-group row my-2">
+                  <label for="txtIdDevolverPrestamo" class="col-4 col-form-label">ID préstamo</label> 
+                  <div class="col-8">
+                    <input id="txtIdDevolverPrestamo" name="txtIdDevolverPrestamo" type="text" class="form-control">
+                  </div>
+                </div> 
+                <div class="form-group row my-2">
+                  <div class="offset-4 col-8">
+                    <input name="botonDevolverPrestamo" type="button" class="btn btn-primary w-25" value="Devolver" onclick="devolverPrestamo()"/>
+                </div>
+                </div>
+              </form>
+        </div> <!--fin área devolver préstamo-->
+
+        <div class="areaFrm my-5" id="areaListadoPrestamos" hidden> <!--área listado préstamos-->
+          <form class="w-50" name="frmListadoPrestamos" id="frmListadoPrestamos">
+
+            <legend>Listado de Préstamos segun dos fechas</legend>
+
+            <!--Fecha Inicial para el listado-->
+            <div class="form-group">
+              <label for="dtFechaInicial">Fecha inicial</label>
+              <div class="w-50" name="frmListadoPrestamosFechaInicial" id="frmListadoPrestamosFechaInicial">
+                <input type="date" class="form-control input-md" id="dtListadoPrestamosFechaInicial" name="dtListadoPrestamosFechaInicial">
+              </div>
+            </div>
+
+            <!--Fecha Final para el listado-->
+            <div class="form-group">
+              <label for="dtFechaFinal">Fecha Final</label>
+              <div class="w-50" name="frmListadoPrestamosFechaFinal" id="frmListadoPrestamosFechaFinal">
+                <input type="date" class="form-control input-md" id="dtListadoPrestamosFechaFinal" name="dtListadoPrestamosFechaFinal">
+              </div>
+            </div>
+
+            <!--Button-->
+            <div class="form-group">
+              <label for="btnListadoPrestamos"></label>
+              <div class="w-50" name="frmListadoPrestamosFechaFBoton">
+                <input type="button" id="btnListadoPrestamosBoton" name="btnListadoPrestamosBoton" class="btn btn-primary" value="Listar" onclick="aceptarListadoPrestamos()"/>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+        <div class="areaFrm my-5" id="areaListadoPrestamosUsuario" hidden> <!--área listado préstamos usuario-->
+          <form class="w-50" name="frmListadoPrestamosUsuario" id="frmListadoPrestamosUsuario">
+
+            <legend>Listado de Préstamos del Usuario</legend>
+
+            <!--Usuario para el listado-->
+            <div class="form-group">
+              <label for="idUsuario">ID Usuario</label>
+              <div class="w-50" name="frmListadoPrestamosUsuario" id="frmListadoPrestamosUsuario">
+                <input type="text" class="form-control input-md" id="iIdUsuario" name="iIdUsuario">
+              </div>
+            </div>
+
+            <!--Button-->
+            <div class="form-group">
+              <label for="btnListadoPrestamosUsuario"></label>
+              <div class="w-50" name="frmListadoPrestamosFechaFBoton">
+                <input type="button" id="btnListadoPrestamosUsuarioBoton" name="btnListadoPrestamosUsuarioBoton" class="btn btn-primary" value="Listar" onclick="aceptarListadoPrestamosUsuario()"/>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+        <div class="areaFrm my-5" id="areaListadoTiposArticulos" hidden> <!--área listado tipos de articulos-->
+          <form class="w-50" name="frmListadoTiposArticulos" id="frmListadoTiposArticulos">
+            
+            <legend>Listado de Artículos</legend>
+
+            <!--Tipo de Archivo que se quiere listar-->
+            <div class="form-group">
+              <label for="tipoArchivo">Tipo de Archivo</label>
+              <div class="w-50" name="frmListadoTiposArticulos" id="frmListadoTiposArticulos">
+                <select name="tipoArchivo" id="tipoArchivo">
+                  <option value="Libro">Libros</option>
+                  <option value="DVD">DVD</option>
+                </select>
+              </div>
+            </div>
+
+            <!--Button-->
+            <div class="form-group">
+              <label for="btnListadoTiposArticulos"></label>
+              <div class="w-50" name="frmListadoPrestamosFechaFBoton">
+                <input type="button" id="btnListadoTiposArticulos" name="btnListadoTiposArticulos" class="btn btn-primary" value="Listar" onclick="aceptarListadoTiposArticulos()"/>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      
+      <div id="mensaje"></div>
+
+      </div> <!--container-->
+
+
+<!--JS Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!--JS del grupo de trabajo-->
+<script type="text/javascript" src="js/objetos.js"></script>
+<script type="text/javascript" src="js/principal.js"></script>
+</body>
+</html>
